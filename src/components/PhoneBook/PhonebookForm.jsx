@@ -6,17 +6,19 @@ export class PhonebookForm extends Component {
     name: '',
   };
 
-  onChangeHandler(event) {
-    // const { name, value } = event.target;
-    // this.setState({ [name]: value });
-    // console.log(event.target);
-    console.dir(event.target.value);
-  }
+  onChangeHandler = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
-  onSubmitHandler(event) {
+  onSubmitHandler = event => {
     event.preventDefault();
-    this.props.onSubmit({ ...this.state, id: nanoid() });
-    console.log('submit event');
+    this.props.onContactAdd({ ...this.state, id: nanoid(6) });
+    this.clearForm();
+  };
+
+  clearForm() {
+    this.setState({ name: '' });
   }
 
   render() {
@@ -25,6 +27,7 @@ export class PhonebookForm extends Component {
         <input
           type="text"
           name="name"
+          value={this.state.name}
           // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           onChange={this.onChangeHandler}

@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { nanoid } from 'nanoid';
 import { PhonebookForm } from './PhoneBook/PhonebookForm';
+import { ContactsList } from './PhoneBook/ContactsList/ContactsList';
 export class App extends Component {
   state = {
     contacts: [],
@@ -16,11 +16,13 @@ export class App extends Component {
   };
 
   render() {
+    const contacts = this.state.contacts;
     return (
       <>
         <h2>Phonebook</h2>
         <PhonebookForm onContactAdd={this.addContact} />
         <h2>Contacts</h2>
+        <ContactsList contacts={contacts} />
       </>
     );
   }
