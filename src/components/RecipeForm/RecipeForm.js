@@ -1,6 +1,7 @@
 import { Formik, Field } from 'formik';
 import { FormField, Form, ErrorMessage } from './RecipeForm.styled';
 import * as Yup from 'yup';
+import { nanoid } from 'nanoid';
 
 const RecipeSchema = Yup.object().shape({
   name: Yup.string()
@@ -16,7 +17,7 @@ const RecipeSchema = Yup.object().shape({
 
 //01:15:50
 
-export const RecipeForm = () => {
+export const RecipeForm = ({ onSubmit }) => {
   return (
     <Formik
       initialValues={{
@@ -29,7 +30,7 @@ export const RecipeForm = () => {
       }}
       validationSchema={RecipeSchema}
       onSubmit={values => {
-        console.log(values);
+        onSubmit({ ...values, id: nanoid() });
       }}
     >
       <Form>
