@@ -5,8 +5,10 @@ export class ContactsList extends Component {
     console.log(this.props);
     return (
       <ul>
-        {this.props.contacts.map(({ id, name }) => (
-          <li key={id}>{name}</li>
+        {this.props.contacts.map(({ id, name, number }) => (
+          <li key={id}>
+            {name}: {number}
+          </li>
         ))}
       </ul>
     );
