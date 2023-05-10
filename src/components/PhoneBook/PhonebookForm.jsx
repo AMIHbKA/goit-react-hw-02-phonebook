@@ -1,11 +1,6 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-const INITIAL_STATE = {
-  name: '',
-  number: '',
-};
-
 export class PhonebookForm extends Component {
   state = {
     name: '',
