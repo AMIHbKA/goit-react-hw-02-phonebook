@@ -1,15 +1,12 @@
-import { Component } from 'react';
-
-export class ContactsList extends Component {
-  render() {
-    return (
-      <ul>
-        {this.props.contacts.map(({ id, name, number }) => (
-          <li key={id}>
-            {name}: {number}
-          </li>
-        ))}
-      </ul>
-    );
-  }
-}
+export const ContactsList = ({ contacts, onDelete }) => {
+  return (
+    <ul>
+      {contacts.map(({ id, name, number }) => (
+        <li key={id}>
+          {name}: {number}
+          <button onClick={() => onDelete(id)}>Delete</button>
+        </li>
+      ))}
+    </ul>
+  );
+};

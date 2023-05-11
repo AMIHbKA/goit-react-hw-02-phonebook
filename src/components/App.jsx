@@ -13,7 +13,7 @@ export class App extends Component {
     filter: '',
   };
 
-  addContact = newContact => {
+  onAddContact = newContact => {
     this.setState(prevState => {
       const { contacts } = prevState;
 
@@ -36,6 +36,16 @@ export class App extends Component {
     this.setState({ filter: event.currentTarget.value });
   };
 
+  onDeleteContact = contactId => {
+    this.setState(prevState => {
+      return {
+        contacts: prevState.contacts.filter(
+          contact => contact.id !== contactId
+        ),
+      };
+    });
+  };
+
   getFilteredContacts = () => {
     const { filter, contacts } = this.state;
     const optimizedFilter = filter.toLowerCase();
@@ -51,10 +61,13 @@ export class App extends Component {
     return (
       <>
         <h2>Phonebook</h2>
-        <ContactForm onContactAdd={this.addContact} />
+        <ContactForm onContactAdd={this.onAddContact} />
         <h2>Contacts</h2>
         <Filter value={filter} onFilter={this.onFilterChange} />
-        <ContactsList contacts={visibleContacts} />
+        <ContactsList
+          contacts={visibleContacts}
+          onDelete={this.onDeleteContact}
+        />
       </>
     );
   }
