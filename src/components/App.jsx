@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { PhonebookForm } from './PhoneBook/PhonebookForm';
 import { ContactsList } from './PhoneBook/ContactsList/ContactsList';
+import { Filter } from './PhoneBook/Filter/Filter';
 export class App extends Component {
   state = {
     contacts: [
@@ -22,14 +23,29 @@ export class App extends Component {
     });
   };
 
+  onFilterChange = event => {
+    this.setState({ filter: event.currentTarget.value });
+  };
+
+  getFilteredContacts = () => {
+    const { filter, contacts } = this.state;
+    const optimizedFilter = filter.toLowerCase();
+    return contacts.filter(({ name }) =>
+      name.toLowerCase().includes(optimizedFilter)
+    );
+  };
+
   render() {
-    const contacts = this.state.contacts;
+    const { filter } = this.state;
+    const visibleContacts = this.getFilteredContacts();
+
     return (
       <>
         <h2>Phonebook</h2>
         <PhonebookForm onContactAdd={this.addContact} />
         <h2>Contacts</h2>
-        <ContactsList contacts={contacts} />
+        <Filter value={filter} onFilter={this.onFilterChange} />
+        <ContactsList contacts={visibleContacts} />
       </>
     );
   }
