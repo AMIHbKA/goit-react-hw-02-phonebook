@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { PhonebookForm } from './PhoneBook/PhonebookForm';
+import { ContactForm } from './PhoneBook/ContactForm';
 import { ContactsList } from './PhoneBook/ContactsList/ContactsList';
 import { Filter } from './PhoneBook/Filter/Filter';
 export class App extends Component {
@@ -11,8 +11,6 @@ export class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
   };
 
   addContact = newContact => {
@@ -42,7 +40,7 @@ export class App extends Component {
     return (
       <>
         <h2>Phonebook</h2>
-        <PhonebookForm onContactAdd={this.addContact} />
+        <ContactForm onContactAdd={this.addContact} />
         <h2>Contacts</h2>
         <Filter value={filter} onFilter={this.onFilterChange} />
         <ContactsList contacts={visibleContacts} />

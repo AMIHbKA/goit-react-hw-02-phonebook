@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { nanoid } from 'nanoid';
 
-export class PhonebookForm extends Component {
+export class ContactForm extends Component {
   state = {
     name: '',
     number: '',
