@@ -1,7 +1,9 @@
 import { Component } from 'react';
-import { ContactForm } from './ContactForm/ContactForm';
+import { ContactForm } from './PhoneBook/ContactForm/ContactForm';
 import { ContactsList } from './PhoneBook/ContactsList/ContactsList';
 import { Filter } from './PhoneBook/Filter/Filter';
+import PropTypes from 'prop-types';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -32,8 +34,8 @@ export class App extends Component {
     });
   };
 
-  onFilterChange = event => {
-    this.setState({ filter: event.currentTarget.value });
+  onFilterChange = ({ currentTarget: { value } }) => {
+    this.setState({ filter: value });
   };
 
   onDeleteContact = contactId => {
@@ -72,3 +74,14 @@ export class App extends Component {
     );
   }
 }
+
+App.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  filter: PropTypes.string,
+};
