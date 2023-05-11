@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { ContactForm } from './PhoneBook/ContactForm';
+import { ContactForm } from './ContactForm/ContactForm';
 import { ContactsList } from './PhoneBook/ContactsList/ContactsList';
 import { Filter } from './PhoneBook/Filter/Filter';
 export class App extends Component {
@@ -15,8 +15,19 @@ export class App extends Component {
 
   addContact = newContact => {
     this.setState(prevState => {
+      const { contacts } = prevState;
+
+      const alredyInContacts = contacts.some(
+        ({ name }) => name === newContact.name
+      );
+
+      if (alredyInContacts) {
+        alert(`${newContact.name} is already in contacts`);
+        return;
+      }
+
       return {
-        contacts: [...prevState.contacts, newContact],
+        contacts: [...contacts, newContact],
       };
     });
   };

@@ -14,6 +14,7 @@ export class ContactForm extends Component {
 
   onSubmitHandler = event => {
     event.preventDefault();
+
     this.props.onContactAdd({ ...this.state, id: nanoid(6) });
     this.clearForm();
   };
