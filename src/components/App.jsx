@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { ContactForm } from './PhoneBook/ContactForm/ContactForm';
+import { ContactForm2 } from './PhoneBook/ContactForm/ContactForm2';
 import { ContactsList } from './PhoneBook/ContactsList/ContactsList';
 import { Filter } from './PhoneBook/Filter/Filter';
 import PropTypes from 'prop-types';
@@ -63,7 +63,7 @@ export class App extends Component {
     return (
       <>
         <h2>Phonebook</h2>
-        <ContactForm onContactAdd={this.onAddContact} />
+        <ContactForm2 onContactAdd={this.onAddContact} />
         <h2>Contacts</h2>
         <Filter value={filter} onFilter={this.onFilterChange} />
         <ContactsList
