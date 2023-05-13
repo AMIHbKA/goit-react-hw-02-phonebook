@@ -16,12 +16,32 @@ export const List = styled.ul`
 export const Trash = styled(TrashIcon)`
   width: 1em;
   height: 1em;
-  padding-right: 1em;
   vertical-align: middle;
-  cursor: pointer;
 
   &:hover,
   :focus {
     fill: blue;
+  }
+`;
+
+export const Button = styled.button`
+  width: 2em;
+  height: 2em;
+  padding: 0;
+  margin-right: 1em;
+  background-color: blue;
+  border-radius: 4px;
+  border: 1px solid blue;
+  cursor: pointer;
+  svg {
+    fill: #fff;
+  }
+
+  &:hover,
+  :focus {
+    background-color: #fff;
+    svg {
+      fill: blue;
+    }
   }
 `;
