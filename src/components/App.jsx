@@ -1,8 +1,9 @@
 import { Component } from 'react';
-import { ContactForm2 } from './PhoneBook/ContactForm/ContactForm2';
+import { ContactForm } from './PhoneBook/ContactForm/ContactForm';
 import { ContactsList } from './PhoneBook/ContactsList/ContactsList';
 import { Filter } from './PhoneBook/Filter/Filter';
 import PropTypes from 'prop-types';
+import { Container } from './PhoneBook/Container/Container.styled';
 
 export class App extends Component {
   state = {
@@ -61,16 +62,16 @@ export class App extends Component {
     const visibleContacts = this.getFilteredContacts();
 
     return (
-      <>
+      <Container>
         <h2>Phonebook</h2>
-        <ContactForm2 onContactAdd={this.onAddContact} />
+        <ContactForm onContactAdd={this.onAddContact} />
         <h2>Contacts</h2>
         <Filter value={filter} onFilter={this.onFilterChange} />
         <ContactsList
           contacts={visibleContacts}
           onDelete={this.onDeleteContact}
         />
-      </>
+      </Container>
     );
   }
 }
