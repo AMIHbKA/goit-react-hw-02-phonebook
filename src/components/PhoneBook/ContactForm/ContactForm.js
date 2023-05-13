@@ -13,7 +13,7 @@ const ContactsSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
-    .trim()
+
     .required('Required'),
   number: Yup.string()
     .trim()
