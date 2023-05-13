@@ -4,6 +4,7 @@ import {
   ErrorMessage as FormikError,
   Field as FormikField,
 } from 'formik';
+import { baseInputStyles } from '../UI/Base.styled';
 
 export const FormField = styled.label`
   display: flex;
@@ -30,7 +31,7 @@ export const Form = styled(FormikForm)`
 `;
 
 export const Button = styled.button`
-  padding: 0.1em 0.3em;
+  padding: 5px;
   font-family: inherit;
   font-weight: 500;
   border-style: solid;
@@ -52,12 +53,5 @@ export const Button = styled.button`
 `;
 
 export const Field = styled(FormikField)`
-  border: 1px solid blue;
-  border-radius: 4px;
-  font-size: 1em;
-
-  &:focus {
-    border-color: grey;
-    outline: none;
-  }
+  ${baseInputStyles}
 `;
