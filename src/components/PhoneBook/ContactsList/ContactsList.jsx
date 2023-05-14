@@ -6,7 +6,7 @@ export const ContactsList = ({ contacts, onDelete }) => {
     <List>
       {contacts.map(({ id, name, number }) => (
         <li key={id}>
-          <Button onClick={() => onDelete(id)}>
+          <Button onClick={() => onDelete(id)} aria-label="Delete Contact">
             <Trash width={18} height={18} />
           </Button>
           {name}: {number}
